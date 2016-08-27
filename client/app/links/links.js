@@ -9,4 +9,9 @@ angular.module('shortly.links', [])
 
   $scope.data.links = links;
 
+})
+.directive('shortenedLink', function() {
+  return {
+    template: '<a href="{{link.baseUrl}}/{{link.code}}">{{link.baseUrl}}/{{link.code}}</a>'
+  };
 });
