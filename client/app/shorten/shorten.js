@@ -15,6 +15,7 @@ angular.module('shortly.shorten', [])
     if ($scope.link.url.includes('http://')) {
       return Links.addOne($scope.link);  
     }
+    return;
   };
 
   $scope.text = 'Enter a link';

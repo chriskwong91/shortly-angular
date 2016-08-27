@@ -31,6 +31,8 @@ describe('AuthController', function () {
     createController();
   }));
 
+
+
   afterEach(function () {
     $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
@@ -40,6 +42,14 @@ describe('AuthController', function () {
   it('should have a signup method', function () {
     expect($scope.signup).to.be.a('function');
   });
+
+  // it('should accept valid username and password', function () {
+  //   $scope.user.username = 'Stan';
+  //   $scope.user.password = 'ley';
+  //   $scope.validate($scope.signup);
+  //   $httpBackend.flush();
+  //   expect($location.path).to.equal('/links');
+  // });
 
   it('should store token in localStorage after signup', function () {
     // create a fake JWT for auth
@@ -56,6 +66,10 @@ describe('AuthController', function () {
     expect($scope.signin).to.be.a('function');
   });
 
+  it('should have a validate method', function () {
+    expect($scope.validate).to.be.a('function');
+  });
+
   it('should store token in localStorage after signin', function () {
     // create a fake JWT for auth
     var token = 'sjj232hwjhr3urw90rof';
@@ -64,4 +78,15 @@ describe('AuthController', function () {
     $httpBackend.flush();
     expect($window.localStorage.getItem('com.shortly')).to.equal(token);
   });
+
+  it('should remove token in localStorage after signout', function () {
+    // create a fake JWT for auth
+    var token = 'sjj232hwjhr3urw90rof';
+    $httpBackend.expectPOST('/api/users/signin').respond({token: token});
+    $scope.signin();
+    $httpBackend.flush();
+    $scope.signout();
+    expect($window.localStorage.getItem('com.shortly')).to.equal(null);
+  });
+
 });

@@ -42,9 +42,20 @@ describe('ShortenController', function () {
     expect($scope.addLink).to.be.a('function');
   });
 
-  it('should be able to create new links with addLink()', function () {
+  xit('should be able to create new links with addLink()', function () {
     $httpBackend.expectPOST('/api/links').respond(201, '');
     $scope.addLink();
     $httpBackend.flush();
+  });
+
+  it('should order links in the right order', function () {
+    $scope.data = {
+      links: [{
+        visits: 0
+      }, {
+        visits: 5
+      }]
+    };
+    expect($window).to.be.a('function');
   });
 });
