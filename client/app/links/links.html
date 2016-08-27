@@ -1,7 +1,7 @@
-<div ng-controller='LinksController' id='container'>
+<div id='container'>
   <!-- Your html here -->
   <h1>Links</h1>
-  <input ng-model='search' value='filter'/>
+  <input ng-model='search'/>
   <div class='link' ng-repeat="link in data.links | filter:search | orderBy: '-visits'">
     <img src='../assets/redirect_icon.png'/>
     <div class='info'>

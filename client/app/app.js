@@ -17,7 +17,13 @@ angular.module('shortly', [
     })
     .when('/links', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      resolve: {
+        links: function(Links) {
+          console.log('resolving Links: ', Links);
+          return Links.getAll();
+        }
+      }
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
