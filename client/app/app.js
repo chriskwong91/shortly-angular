@@ -25,7 +25,7 @@ angular.module('shortly', [
     })
     .otherwise({
       // templateUrl: 'app/auth/signup.html',
-      redirectTo: '/signin'
+      redirectTo: '/links'
     });
     // Your code here
 

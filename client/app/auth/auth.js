@@ -14,6 +14,7 @@ angular.module('shortly.auth', [])
       })
       .catch(function (error) {
         console.error(error);
+        $scope.text = 'Username or Password Invalid.';
       });
   };
 
@@ -28,6 +29,17 @@ angular.module('shortly.auth', [])
       });
   };
 
-
   $scope.signout = Auth.signout;
+
+  $scope.text = 'Enter username and password.';
+
+  $scope.validate = function(cb) {
+    var un = $scope.user.username;
+    var pw = $scope.user.password;
+    if (un.length < 3 || pw.length < 3) {
+      $scope.text = 'Username or password needs to have more than 3 characters.';
+    } else {
+      cb();
+    }
+  };
 });

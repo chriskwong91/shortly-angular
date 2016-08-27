@@ -1,10 +1,8 @@
-<div id='container'>
+<div id='container' ng-controller='ShortenController'>
 <!-- Your code here -->
-
-  <h1>Shorten!!!</h1>
-  <input>
-  <button>add</button>
-
+  <h1>Shorten</h1>
+  <input ng-model='link.url' ng-change='validate()'><button ng-click="addLink(link.url)">add</button>
+  <p>{{ text }}</p>
 </div>
 
 
